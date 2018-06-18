@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 
-import { MatInputModule, MatSelectModule, MatPaginatorModule } from '@angular/material';
+import { MatListModule, MatInputModule, MatSelectModule, MatPaginatorModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
@@ -21,6 +21,7 @@ import { Paging } from './utils/paging';
     BrowserAnimationsModule,
     HttpModule,
     FormsModule,
+    MatListModule,
     MatInputModule,
     MatSelectModule,
     MatPaginatorModule

@@ -4,7 +4,6 @@ import { Subscription } from 'rxjs/Subscription';
 import { Observable } from "rxjs/Observable";
 import { AppService } from "./app.service";
 import { Paging } from './utils/paging';
-import { PageEvent } from '@angular/material';
 
 @Component({
   selector: 'app-root',
@@ -24,8 +23,8 @@ export class AppComponent implements OnInit, OnDestroy {
   pager: any = {};
   pagedComments: any = [];
   comments: any = [];
-  pageOption: Array<number> = [5, 10, 25, 100];
-  pageEvent: PageEvent;
+  pageOptions: Array<number> = [5, 10, 25, 100];
+  pageOption: number = this.pageOptions[1];
   
   private _url: string = 'https://jsonplaceholder.typicode.com/comments';
 
@@ -49,7 +48,7 @@ export class AppComponent implements OnInit, OnDestroy {
     return this._getComments()
         .then((response: Response) => {
           this.comments = response;
-          this.setPage({pageIndex: 0, pageSize: 10, length: this.comments.length})
+          this.setPage({pageIndex: 0, pageSize: this.pageOption, length: this.comments.length})
         }, (error) => {
           console.log(error);
         });
@@ -74,5 +73,4 @@ export class AppComponent implements OnInit, OnDestroy {
     this.pager = this.paging.getPager({pageIndex, pageSize, length});
     this.pagedComments = this.comments.slice(this.pager.startIndex, this.pager.endIndex + 1);
   }
-
 }

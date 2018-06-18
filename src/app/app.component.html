@@ -1,23 +1,18 @@
-<form class="example-form">
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="Search for the word" (keyup)="0" #query>
-  </mat-form-field>
-</form>
+<mat-form-field class="searchInput">
+  <input matInput placeholder="Search for the word" (keyup)="0" #query>
+</mat-form-field>
 <mat-form-field>
   <mat-select [(ngModel)]="type">
-    <mat-option *ngFor="let option of options" [value]="option">
-      {{ option }}
-    </mat-option>
+    <mat-option *ngFor="let option of options" [value]="option">{{option}}</mat-option>
   </mat-select>
 </mat-form-field>
-<ul *ngFor="let comment of pagedComments | search: {query: query.value, type: type}">
-  <li [innerHTML]="comment.alias"></li>
-</ul>
 
-{{pageEvent | json}}
+<mat-list class="comments" *ngFor="let comment of pagedComments | search: {query: query.value, type: type}">
+  <mat-list-item [innerHTML]="comment.alias"></mat-list-item>
+</mat-list>
 
 <mat-paginator [length]="comments.length"
-              [pageSize]="10"
-              [pageSizeOptions]="pageOption"
+              [pageSize]="pageOption"
+              [pageSizeOptions]="pageOptions"
               (page)="setPage($event)">
 </mat-paginator>
