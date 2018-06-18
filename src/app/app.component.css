@@ -1,0 +1,15 @@
+.highlight {
+    background-color: red;
+}
+
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+    display: inline-block;
+    margin-right: 30px;
+}
+  
+.example-full-width {
+    width: 100%;
+}
